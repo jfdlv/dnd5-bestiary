@@ -7,7 +7,7 @@ import {getAllMonstersAction} from './actions/index';
 import {bindActionCreators} from 'redux';
 
 //my components
-import MonstersTable from "./components/monsters/MonstersTable";
+import MonstersTable from "./components/MonstersTable/MonstersTable";
 
 //react-bootstrap2
 import BootstrapTable from 'react-bootstrap-table-next';

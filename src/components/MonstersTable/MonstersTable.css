@@ -1,0 +1,74 @@
+.multiple-values-container {
+    font-size: 12px;
+}
+
+.title {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.section-title {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
+.underlined-title {
+    text-decoration: underline;
+}
+
+.dmg-property-title {
+    margin-bottom: 0px;
+}
+
+.dmg-property-title:not(:first-child) {
+    margin-top: 40px;
+}
+
+.languages-container {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.languages-container > div.row {
+    padding: 10px;
+}
+
+.fas.fa-circle {
+    font-size: 12px;
+}
+
+h5 {
+    padding: 5px;
+}
+
+h6 {
+    padding: 5px;
+}
+
+div.monster-name-cr-container {
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+div.monster-name { 
+    display:inline-block;
+    text-align: center;
+    width: 32%;
+}
+
+div.monster-cr {
+    display: inline-block;
+    text-align: right;
+    width: 33%;
+}
+
+div.buttons-container {
+    display:inline-block;
+    text-align: left;
+    width: 33%;
+}

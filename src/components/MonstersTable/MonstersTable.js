@@ -10,12 +10,15 @@ import {bindActionCreators} from 'redux';
 import util from "../../util/util";
 
 //react-bootstrap components
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 //react-bootstrap-table2
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -160,19 +163,14 @@ class MonstersTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMonsterModal: false
+      showMonsterModal: false,
+      showSpecialFeatures: false
     }
   }
 
   componentDidMount() { 
     this.props.getAllMonstersAction();
   }
-
-  // componentDidUpdate(prevProps) {
-  //   if(this.props.monsterInfo !== prevProps.monsterInfo) {
-  //     console.log(this.props.monsterInfo);
-  //   }
-  // }
 
   handleMonsterModalOpen = () => { 
     this.setState({showMonsterModal: true});
@@ -307,66 +305,103 @@ class MonstersTable extends React.Component {
   };
 
   render() {  
+    let languages = this.props.monsterInfo ? this.props.monsterInfo.languages.split(',') : "";
     return (
-      <React.Fragment>
+      <Container>
         {this.props.allMonsters && 
         <React.Fragment>
           <BootstrapTable bootstrap4 keyField='name' data={ this.props.allMonsters } columns={ monsterTableColumns } filter={ filterFactory() } rowEvents={ this.rowEvents }/>
           <Modal show={this.state.showMonsterModal} onHide={this.handleMonsterModalClose} size={"lg"} className="search-modal">
                 <Modal.Header closeButton>
-                  <Modal.Title>{this.props.monsterInfo ? this.props.monsterInfo.name : ""}</Modal.Title>
+                    <div className="monster-name-cr-container">
+                      <div className="buttons-container">
+                        <ButtonGroup>
+                          {!this.state.showSpecialFeatures && <Button variant="secondary" onClick={()=>{this.setState({showSpecialFeatures: true})}}>Special abilities</Button>}
+                          {this.state.showSpecialFeatures && <Button variant="secondary" onClick={()=>{this.setState({showSpecialFeatures: false})}}>General Info</Button>}
+                          <Button variant="secondary">Actions</Button>
+                        </ButtonGroup>
+                      </div>
+                      <div className="monster-name">
+                        {this.props.monsterInfo ? this.props.monsterInfo.name : ""}
+                      </div>
+                      <div className="monster-cr">
+                        CR {this.props.monsterInfo ? this.props.monsterInfo.challenge_rating : "--"}
+                      </div>
+                    </div>
                 </Modal.Header>
                 <Modal.Body>
-                  {this.props.monsterInfo && this.renderMonsterGeneralInfo()}
-                  {this.props.monsterInfo && this.renderMonsterAbilityScoresAndMods()}
-                  {this.props.monsterInfo &&
-                  <Accordion>
+                  
+                  {!this.state.showSpecialFeatures && <React.Fragment>
+                    <h3 className="section-title">General info</h3>
+                    {this.props.monsterInfo && this.renderMonsterGeneralInfo()}
                     
-                    { this.props.monsterInfo && this.props.monsterInfo.proficiencies.length > 0 &&
-                      <Card>
-                        <Accordion.Toggle as={Card.Header} eventKey="0">
-                          Proficiencies
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="0">
-                          {this.renderMonsterProficiencies()}
-                        </Accordion.Collapse>
-                      </Card>
-                    }
-                    
-                    {this.props.monsterInfo && (this.props.monsterInfo.damage_vulnerabilities.length > 0 || this.props.monsterInfo.damage_resistances.length > 0 || this.props.monsterInfo.damage_immunities.length > 0) && 
-                    <Card>
-                      <Accordion.Toggle as={Card.Header} eventKey="1">
-                       Vulnerabilities / Resistances / Inmunities
-                      </Accordion.Toggle>
-                      <Accordion.Collapse eventKey="1">
-                        {this.renderMonsterDmgProperties()}
-                      </Accordion.Collapse>
-                    </Card>}
-                    
-                    {this.props.monsterInfo && this.props.monsterInfo.condition_immunities.length > 0 && 
-                    <Card>
-                      <Accordion.Toggle as={Card.Header} eventKey="2">
-                        Condition Immunities
-                      </Accordion.Toggle>
-                      <Accordion.Collapse eventKey="2">
-                        {this.renderConditionInmunities()}
-                      </Accordion.Collapse>
-                    </Card>}
+                    {this.props.monsterInfo && this.renderMonsterAbilityScoresAndMods()}
 
-                    {this.props.monsterInfo.senses && !_.isEmpty(this.props.monsterInfo.senses) && 
-                    <Card>
-                      <Accordion.Toggle as={Card.Header} eventKey="2">
-                        Senses
-                      </Accordion.Toggle>
-                      <Accordion.Collapse eventKey="2">
-                        {this.renderMonsterSenses()}
-                      </Accordion.Collapse>
-                    </Card>}
-                  </Accordion>}
+                    {languages.length > 0 && <div className='languages-container'>
+                      <h6>Languages</h6>
+                      <Row> 
+                      {
+                        languages.map((element)=>{
+                          return <Col md={3}><i className="fas fa-circle"/> {element}</Col>
+                        })
+                      }
+                      </Row>
+                    </div>}
+                    
+                    {this.props.monsterInfo &&
+                    <Accordion>
+                      { this.props.monsterInfo && this.props.monsterInfo.proficiencies.length > 0 &&
+                        <Card>
+                          <Accordion.Toggle as={Card.Header} eventKey="0">
+                            Proficiencies
+                          </Accordion.Toggle>
+                          <Accordion.Collapse eventKey="0">
+                            {this.renderMonsterProficiencies()}
+                          </Accordion.Collapse>
+                        </Card>
+                      }
+                      
+                      {this.props.monsterInfo && (this.props.monsterInfo.damage_vulnerabilities.length > 0 || this.props.monsterInfo.damage_resistances.length > 0 || this.props.monsterInfo.damage_immunities.length > 0) && 
+                      <Card>
+                        <Accordion.Toggle as={Card.Header} eventKey="1">
+                        Vulnerabilities / Resistances / Inmunities
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="1">
+                          {this.renderMonsterDmgProperties()}
+                        </Accordion.Collapse>
+                      </Card>}
+                      
+                      {this.props.monsterInfo && this.props.monsterInfo.condition_immunities.length > 0 && 
+                      <Card>
+                        <Accordion.Toggle as={Card.Header} eventKey="2">
+                          Condition Immunities
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="2">
+                          {this.renderConditionInmunities()}
+                        </Accordion.Collapse>
+                      </Card>}
+
+                      {this.props.monsterInfo.senses && !_.isEmpty(this.props.monsterInfo.senses) && 
+                      <Card>
+                        <Accordion.Toggle as={Card.Header} eventKey="2">
+                          Senses
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="2">
+                          {this.renderMonsterSenses()}
+                        </Accordion.Collapse>
+                      </Card>}
+                    </Accordion>}
+                  </React.Fragment>}
+                  {
+                    this.state.showSpecialFeatures && 
+                    <div>
+                        special abilities first step
+                    </div>
+                  }
                 </Modal.Body>
           </Modal>
         </React.Fragment>}
-      </React.Fragment>
+      </Container>
     );
   }
 }
