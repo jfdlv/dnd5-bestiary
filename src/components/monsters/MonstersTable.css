@@ -1,3 +1,20 @@
 .multiple-values-container {
     font-size: 12px;
 }
+
+.title {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.underlined-title {
+    text-decoration: underline;
+}
+
+.dmg-property-title {
+    margin-bottom: 0px;
+}
+
+.dmg-property-title:not(:first-child) {
+    margin-top: 40px;
+}

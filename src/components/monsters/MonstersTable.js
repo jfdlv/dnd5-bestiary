@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 
 import {connect} from 'react-redux';
 import {getAllMonstersAction,
@@ -9,10 +10,12 @@ import {bindActionCreators} from 'redux';
 import util from "../../util/util";
 
 //react-bootstrap components
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 //react-bootstrap-table2
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -165,11 +168,11 @@ class MonstersTable extends React.Component {
     this.props.getAllMonstersAction();
   }
 
-  componentDidUpdate(prevProps) {
-    if(this.props.monsterInfo !== prevProps.monsterInfo) {
-      console.log(this.props.monsterInfo);
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if(this.props.monsterInfo !== prevProps.monsterInfo) {
+  //     console.log(this.props.monsterInfo);
+  //   }
+  // }
 
   handleMonsterModalOpen = () => { 
     this.setState({showMonsterModal: true});
@@ -196,6 +199,106 @@ class MonstersTable extends React.Component {
     </React.Fragment>)
   }
 
+  renderMonsterProficiencies = () => {
+    
+    var proficiencies = this.props.monsterInfo.proficiencies;
+    
+    var savingThrows = _.filter(proficiencies, (element)=>{
+      return element.name.search("Saving Throw") > -1;
+    })
+
+    var skills = _.filter(proficiencies, (element) => {
+      return element.name.search("Skill") > -1;
+    })
+
+    return (<Card.Body>
+      {savingThrows.length > 0 && 
+        <React.Fragment>
+          <h5 className="underlined-title">Saving Throws</h5>
+          <Row>
+            {savingThrows.map((element)=>{
+              return <Col>
+                <span className="title">{element.name.replace("Saving Throw:","")} </span>
+                <span>{element.value}</span>
+              </Col>
+            })}  
+          </Row>
+        </React.Fragment>      
+      }
+      {
+        skills.length > 0 && <React.Fragment> 
+          <h5 className="underlined-title">Skills</h5>
+          <Row>
+            {skills.map((element)=>{
+              return <Col>
+                <span className="title">{element.name.replace("Skill:","")} </span>
+                <span>{element.value}</span>
+              </Col>
+            })}  
+          </Row>   
+        </React.Fragment>
+      }
+      <Row>
+        {proficiencies.map((element)=>{
+          return element.name.search("Saving Throw") == -1 && element.name.search("Skill") == -1 && <div><span className='title'>{element.name} </span><span className='proficiency-value'>{element.value}</span></div>
+        })}
+      </Row>
+    </Card.Body>)
+  }
+
+  renderMonsterDmgProperties = () => {
+    return <Card.Body>
+      {this.props.monsterInfo.damage_vulnerabilities.length > 0 && <React.Fragment>
+        <h5 className='dmg-property-title'>Vulnerabilities</h5>
+        <ListGroup variant="flush">
+          {this.props.monsterInfo.damage_vulnerabilities.map((element)=> {
+            return <ListGroup.Item>{element}</ListGroup.Item>
+          })}
+        </ListGroup>
+      </React.Fragment>}
+      {this.props.monsterInfo.damage_resistances.length > 0 && <React.Fragment>
+        <h5 className='dmg-property-title'>Resistances</h5>
+        <ListGroup variant="flush">
+          {this.props.monsterInfo.damage_resistances.map((element)=> {
+            return <ListGroup.Item>{element}</ListGroup.Item>
+          })}
+        </ListGroup>
+      </React.Fragment>}
+      {this.props.monsterInfo.damage_immunities.length > 0 && <React.Fragment>
+        <h5 className='dmg-property-title'>Immunities</h5>
+        <ListGroup variant="flush">
+          {this.props.monsterInfo.damage_immunities.map((element)=> {
+            return <ListGroup.Item>{element}</ListGroup.Item>
+          })}
+        </ListGroup>
+      </React.Fragment>}
+    </Card.Body>
+  }
+
+  renderConditionInmunities = () => {
+    return <Card.Body>
+        <ListGroup variant="flush">
+          {this.props.monsterInfo.condition_immunities.map((element)=> {
+            return <ListGroup.Item>{element.name}</ListGroup.Item>
+          })}
+        </ListGroup>
+    </Card.Body>
+  }
+   
+  renderMonsterSenses = () => {
+    return <Card.Body>
+      <ListGroup variant="flush">
+      {
+        _.map(this.props.monsterInfo.senses, (value,key) => {
+        return <ListGroup.Item>
+            <span className="title">{key.replace("_"," ")} </span><span>{value}</span>
+          </ListGroup.Item>
+        })
+      }
+      </ListGroup>
+    </Card.Body>
+  }
+
   rowEvents = {
     onClick: (e,row) => { 
         this.props.getMonsterInfoAction(row.url);
@@ -216,6 +319,50 @@ class MonstersTable extends React.Component {
                 <Modal.Body>
                   {this.props.monsterInfo && this.renderMonsterGeneralInfo()}
                   {this.props.monsterInfo && this.renderMonsterAbilityScoresAndMods()}
+                  {this.props.monsterInfo &&
+                  <Accordion>
+                    
+                    { this.props.monsterInfo && this.props.monsterInfo.proficiencies.length > 0 &&
+                      <Card>
+                        <Accordion.Toggle as={Card.Header} eventKey="0">
+                          Proficiencies
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="0">
+                          {this.renderMonsterProficiencies()}
+                        </Accordion.Collapse>
+                      </Card>
+                    }
+                    
+                    {this.props.monsterInfo && (this.props.monsterInfo.damage_vulnerabilities.length > 0 || this.props.monsterInfo.damage_resistances.length > 0 || this.props.monsterInfo.damage_immunities.length > 0) && 
+                    <Card>
+                      <Accordion.Toggle as={Card.Header} eventKey="1">
+                       Vulnerabilities / Resistances / Inmunities
+                      </Accordion.Toggle>
+                      <Accordion.Collapse eventKey="1">
+                        {this.renderMonsterDmgProperties()}
+                      </Accordion.Collapse>
+                    </Card>}
+                    
+                    {this.props.monsterInfo && this.props.monsterInfo.condition_immunities.length > 0 && 
+                    <Card>
+                      <Accordion.Toggle as={Card.Header} eventKey="2">
+                        Condition Immunities
+                      </Accordion.Toggle>
+                      <Accordion.Collapse eventKey="2">
+                        {this.renderConditionInmunities()}
+                      </Accordion.Collapse>
+                    </Card>}
+
+                    {this.props.monsterInfo.senses && !_.isEmpty(this.props.monsterInfo.senses) && 
+                    <Card>
+                      <Accordion.Toggle as={Card.Header} eventKey="2">
+                        Senses
+                      </Accordion.Toggle>
+                      <Accordion.Collapse eventKey="2">
+                        {this.renderMonsterSenses()}
+                      </Accordion.Collapse>
+                    </Card>}
+                  </Accordion>}
                 </Modal.Body>
           </Modal>
         </React.Fragment>}
