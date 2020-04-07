@@ -12,10 +12,8 @@ import * as serviceWorker from './serviceWorker';
 const store = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(
-  <Provider store={store}>  
-    <React.StrictMode>
+  <Provider store={store}>
       <App />
-    </React.StrictMode>
   </Provider>,
   document.getElementById('root')
 );

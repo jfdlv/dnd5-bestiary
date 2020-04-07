@@ -72,3 +72,9 @@ div.buttons-container {
     text-align: left;
     width: 33%;
 }
+
+.info-row { 
+    margin-top:20px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+}
