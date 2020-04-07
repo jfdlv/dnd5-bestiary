@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/dnd5-bestiary/static/css/main.a0d2dff8.chunk.css",
-    "main.js": "/dnd5-bestiary/static/js/main.710422a0.chunk.js",
-    "main.js.map": "/dnd5-bestiary/static/js/main.710422a0.chunk.js.map",
+    "main.css": "/dnd5-bestiary/static/css/main.3e468386.chunk.css",
+    "main.js": "/dnd5-bestiary/static/js/main.d6ed4d70.chunk.js",
+    "main.js.map": "/dnd5-bestiary/static/js/main.d6ed4d70.chunk.js.map",
     "runtime-main.js": "/dnd5-bestiary/static/js/runtime-main.d4c7c0f7.js",
     "runtime-main.js.map": "/dnd5-bestiary/static/js/runtime-main.d4c7c0f7.js.map",
     "static/css/2.de39f076.chunk.css": "/dnd5-bestiary/static/css/2.de39f076.chunk.css",
     "static/js/2.3d1a80d0.chunk.js": "/dnd5-bestiary/static/js/2.3d1a80d0.chunk.js",
     "static/js/2.3d1a80d0.chunk.js.map": "/dnd5-bestiary/static/js/2.3d1a80d0.chunk.js.map",
     "index.html": "/dnd5-bestiary/index.html",
-    "precache-manifest.e6e59c0bf7c560fc8869cbf29cb293a9.js": "/dnd5-bestiary/precache-manifest.e6e59c0bf7c560fc8869cbf29cb293a9.js",
+    "precache-manifest.2be62af2ea3fd78f8c0fece76ef3d717.js": "/dnd5-bestiary/precache-manifest.2be62af2ea3fd78f8c0fece76ef3d717.js",
     "service-worker.js": "/dnd5-bestiary/service-worker.js",
     "static/css/2.de39f076.chunk.css.map": "/dnd5-bestiary/static/css/2.de39f076.chunk.css.map",
-    "static/css/main.a0d2dff8.chunk.css.map": "/dnd5-bestiary/static/css/main.a0d2dff8.chunk.css.map",
+    "static/css/main.3e468386.chunk.css.map": "/dnd5-bestiary/static/css/main.3e468386.chunk.css.map",
     "static/js/2.3d1a80d0.chunk.js.LICENSE.txt": "/dnd5-bestiary/static/js/2.3d1a80d0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d4c7c0f7.js",
     "static/css/2.de39f076.chunk.css",
     "static/js/2.3d1a80d0.chunk.js",
-    "static/css/main.a0d2dff8.chunk.css",
-    "static/js/main.710422a0.chunk.js"
+    "static/css/main.3e468386.chunk.css",
+    "static/js/main.d6ed4d70.chunk.js"
   ]
 }
