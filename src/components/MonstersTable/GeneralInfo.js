@@ -225,7 +225,7 @@ class GeneralInfo extends React.Component {
             <h5 className='dmg-property-title'>Immunities</h5>
             <ListGroup variant="flush">
             {this.props.monsterInfo.damage_immunities.map((element)=> {
-                return <ListGroup.Item>{element}</ListGroup.Item>
+                return <ListGroup.Item key={element}>{element}</ListGroup.Item>
             })}
             </ListGroup>
         </React.Fragment>}
