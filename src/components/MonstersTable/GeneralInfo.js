@@ -56,12 +56,12 @@ const monsterAbilityScoresAndModsColumns = [{
     text: 'Strength',
     formatter: (cell) => {
         return cell && 
-        <div className="multiple-values-container">
+        <div className="ability-modifier-container">
             <div>
-            <span>Ability Score:</span><span>{cell}</span>
+            <span>{util.abililityModCalculator(cell)}</span>
             </div>
             <div>
-            <span>Ability Modifier:</span><span>{util.abililityModCalculator(cell)}</span>
+                <span>{cell}</span>
             </div>
         </div>
     }
@@ -70,12 +70,12 @@ const monsterAbilityScoresAndModsColumns = [{
     text: 'Dexterity',
     formatter: (cell) => {
         return cell && 
-        <div className="multiple-values-container">
+        <div className="ability-modifier-container">
             <div>
-            <span>Ability Score:</span><span>{cell}</span>
+            <span>{util.abililityModCalculator(cell)}</span>
             </div>
             <div>
-            <span>Ability Modifier:</span><span>{util.abililityModCalculator(cell)}</span>
+                <span>{cell}</span>
             </div>
         </div>
     }
@@ -84,12 +84,12 @@ const monsterAbilityScoresAndModsColumns = [{
     text: 'Constitution',
     formatter: (cell) => {
         return cell && 
-        <div className="multiple-values-container">
+        <div className="ability-modifier-container">
             <div>
-            <span>Ability Score:</span><span>{cell}</span>
+                <span>{util.abililityModCalculator(cell)}</span>
             </div>
             <div>
-            <span>Ability Modifier:</span><span>{util.abililityModCalculator(cell)}</span>
+                <span>{cell}</span>
             </div>
         </div>
     }
@@ -98,12 +98,12 @@ const monsterAbilityScoresAndModsColumns = [{
     text: 'Intelligence',
     formatter: (cell) => {
         return cell && 
-        <div className="multiple-values-container">
+        <div className="ability-modifier-container">
             <div>
-            <span>Ability Score:</span><span>{cell}</span>
+            <span>{util.abililityModCalculator(cell)}</span>
             </div>
             <div>
-            <span>Ability Modifier:</span><span>{util.abililityModCalculator(cell)}</span>
+                <span>{cell}</span>
             </div>
         </div>
     }
@@ -112,12 +112,12 @@ const monsterAbilityScoresAndModsColumns = [{
     text: 'Wisdom',
     formatter: (cell) => {
         return cell && 
-        <div className="multiple-values-container">
+        <div className="ability-modifier-container">
             <div>
-            <span>Ability Score:</span><span>{cell}</span>
+            <span>{util.abililityModCalculator(cell)}</span>
             </div>
             <div>
-            <span>Ability Modifier:</span><span>{util.abililityModCalculator(cell)}</span>
+                <span>{cell}</span>
             </div>
         </div>
     }
@@ -126,12 +126,12 @@ const monsterAbilityScoresAndModsColumns = [{
     text: 'Charisma',
     formatter: (cell) => {
             return cell &&
-            <div className="multiple-values-container">
+            <div className="ability-modifier-container">
                 <div>
-                <span>Ability Score:</span><span>{cell}</span>
+                <span>{util.abililityModCalculator(cell)}</span>
                 </div>
                 <div>
-                <span>Ability Modifier:</span><span>{util.abililityModCalculator(cell)}</span>
+                    <span>{cell}</span>
                 </div>
             </div>
         }

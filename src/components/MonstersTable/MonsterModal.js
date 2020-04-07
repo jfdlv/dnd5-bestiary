@@ -29,9 +29,9 @@ class MonsterModal extends React.Component {
                         <div className="monster-name-cr-container">
                         <div className="buttons-container">
                             <ButtonGroup>
-                            <Button variant="secondary" onClick={()=>{this.setState({showSpecialAbilities: false, showMonsterActions: false})}} disabled={!this.state.showSpecialAbilities && !this.state.showMonsterActions}>General Info</Button>
-                            <Button variant="secondary" onClick={()=>{this.setState({showSpecialAbilities: true, showMonsterActions: false})}} disabled={this.state.showSpecialAbilities}>Special abilities</Button>
-                            <Button variant="secondary" onClick={()=>{this.setState({showMonsterActions: true, showSpecialAbilities: false})}} disabled={this.state.showMonsterActions}>Actions</Button>
+                            <Button className="menu-button" variant="secondary" onClick={()=>{this.setState({showSpecialAbilities: false, showMonsterActions: false})}} disabled={!this.state.showSpecialAbilities && !this.state.showMonsterActions}>General Info</Button>
+                            <Button className="menu-button" variant="secondary" onClick={()=>{this.setState({showSpecialAbilities: true, showMonsterActions: false})}} disabled={this.state.showSpecialAbilities}>Special abilities</Button>
+                            <Button className="menu-button" variant="secondary" onClick={()=>{this.setState({showMonsterActions: true, showSpecialAbilities: false})}} disabled={this.state.showMonsterActions}>Actions</Button>
                             </ButtonGroup>
                         </div>
                         <div className="monster-name">

@@ -1,5 +1,16 @@
+
+
 .multiple-values-container {
     font-size: 12px;
+}
+
+.ability-modifier-container {
+    font-size: 12px;
+    text-align: center;
+}
+
+.ability-modifier-container div:first-child {
+    font-size: 20px;    
 }
 
 .title {
@@ -84,4 +95,8 @@ div.buttons-container {
 .info-with-title-row {
     margin-bottom: 20px;
     margin-left: 5px;
+}
+
+div.btn-group button.btn.btn-secondary.menu-button { 
+    font-size: 10px;
 }
