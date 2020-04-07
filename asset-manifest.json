@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/dnd5-bestiary/static/css/main.2a960526.chunk.css",
+    "main.js": "/dnd5-bestiary/static/js/main.2046d8ed.chunk.js",
+    "main.js.map": "/dnd5-bestiary/static/js/main.2046d8ed.chunk.js.map",
+    "runtime-main.js": "/dnd5-bestiary/static/js/runtime-main.d4c7c0f7.js",
+    "runtime-main.js.map": "/dnd5-bestiary/static/js/runtime-main.d4c7c0f7.js.map",
+    "static/css/2.de39f076.chunk.css": "/dnd5-bestiary/static/css/2.de39f076.chunk.css",
+    "static/js/2.95c6f170.chunk.js": "/dnd5-bestiary/static/js/2.95c6f170.chunk.js",
+    "static/js/2.95c6f170.chunk.js.map": "/dnd5-bestiary/static/js/2.95c6f170.chunk.js.map",
+    "index.html": "/dnd5-bestiary/index.html",
+    "precache-manifest.478a4bde28b7042963265444307b2aba.js": "/dnd5-bestiary/precache-manifest.478a4bde28b7042963265444307b2aba.js",
+    "service-worker.js": "/dnd5-bestiary/service-worker.js",
+    "static/css/2.de39f076.chunk.css.map": "/dnd5-bestiary/static/css/2.de39f076.chunk.css.map",
+    "static/css/main.2a960526.chunk.css.map": "/dnd5-bestiary/static/css/main.2a960526.chunk.css.map",
+    "static/js/2.95c6f170.chunk.js.LICENSE.txt": "/dnd5-bestiary/static/js/2.95c6f170.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d4c7c0f7.js",
+    "static/css/2.de39f076.chunk.css",
+    "static/js/2.95c6f170.chunk.js",
+    "static/css/main.2a960526.chunk.css",
+    "static/js/main.2046d8ed.chunk.js"
+  ]
+}
