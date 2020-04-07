@@ -20,11 +20,16 @@ class MonsterActions extends React.Component {
             <Row className="info-row">
                 {action.attack_bonus && <span><span className="title">Attack Bonus: </span><span>{action.attack_bonus}</span></span>}
             </Row>
-            {action.damage && action.damage.length > 0 && action.damage.map((element)=>{  return <Row key={element.damage_type.name}>
-                <Col><span className="title">Damage Type: </span><span>{element.damage_type.name}</span></Col>
-                <Col><span className="title">Damage Dice: </span><span>{element.damage_dice}</span></Col>
-                <Col><span className="title">Damage Bonus: </span><span>{element.damage_bonus}</span></Col>
-            </Row>})}
+            {action.damage && action.damage.length > 0 && action.damage.map((element)=>{  
+                return <Row key={element.damage_type ? element.damage_type.name : element.type}>
+                            {element.damage_type && <Col><span className="title">Damage Type: </span><span>{element.damage_type.name}</span></Col>}
+                            {element.damage_dice && <Col><span className="title">Damage Dice: </span><span>{element.damage_dice}</span></Col>}
+                            {(element.damage_bonus || typeof element.damage_bonus == "number")  && <Col><span className="title">Damage Bonus: </span><span>{element.damage_bonus}</span></Col>}
+
+                            {element.type && <Col><span className="title">Damage Type: </span><span>{element.type}</span></Col>}
+                            {element.dice && <Col><span className="title">Damage Dice: </span><span>{element.dice}</span></Col>}
+                            {(element.bonus || typeof element.bonus == "number")  && <Col><span className="title">Damage Bonus: </span><span>{element.bonus}</span></Col>}
+                        </Row>})}
         </React.Fragment>
     }
 
