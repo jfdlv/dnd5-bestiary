@@ -6,154 +6,76 @@ import {connect} from 'react-redux';
 import util from '../../util/util';
 
 //react-bootstrap components
+import Container from 'react-bootstrap/Container';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import BootstrapTable from 'react-bootstrap-table-next';
-
-const monsterGeneralInfoTableColumns = [{
-dataField:'_id',
-text: "",
-hidden: true
-},{
-dataField: 'size',
-text: 'Size'
-},{
-dataField: 'type',
-text: 'Type'
-},{
-dataField: 'alignment',
-text: 'Alignment'
-},{
-dataField: 'armor_class',
-text: 'AC'
-},{
-dataField: 'hit_points',
-text: 'HP'
-},{
-dataField: 'hit_dice',
-text: 'Hit dice'
-},{
-dataField: 'speed',
-text:'Speed',
-formatter: (cell,row,rowIndex) => {
-    return <div className='multiple-values-container'>
-    {cell.walk && <div><span>Walk: </span><span>{cell.walk}</span></div>}
-    {cell.swim && <div><span>Swim: </span><span>{cell.swim}</span></div>}
-    {cell.fly && <div><span>Fly: </span><span>{cell.fly}</span></div>}
-    {cell.burrow && <div><span>Burrow: </span><span>{cell.burrow}</span></div>}
-
-    </div>
-}
-
-}]
-  
-const monsterAbilityScoresAndModsColumns = [{
-    dataField: 'strength',
-    text: 'Strength',
-    formatter: (cell) => {
-        return cell && 
-        <div className="ability-modifier-container">
-            <div>
-            <span>{util.abililityModCalculator(cell)}</span>
-            </div>
-            <div>
-                <span>{cell}</span>
-            </div>
-        </div>
-    }
-    },{
-    dataField: 'dexterity',
-    text: 'Dexterity',
-    formatter: (cell) => {
-        return cell && 
-        <div className="ability-modifier-container">
-            <div>
-            <span>{util.abililityModCalculator(cell)}</span>
-            </div>
-            <div>
-                <span>{cell}</span>
-            </div>
-        </div>
-    }
-    },{
-    dataField: 'constitution',
-    text: 'Constitution',
-    formatter: (cell) => {
-        return cell && 
-        <div className="ability-modifier-container">
-            <div>
-                <span>{util.abililityModCalculator(cell)}</span>
-            </div>
-            <div>
-                <span>{cell}</span>
-            </div>
-        </div>
-    }
-    },{
-    dataField: 'intelligence',
-    text: 'Intelligence',
-    formatter: (cell) => {
-        return cell && 
-        <div className="ability-modifier-container">
-            <div>
-            <span>{util.abililityModCalculator(cell)}</span>
-            </div>
-            <div>
-                <span>{cell}</span>
-            </div>
-        </div>
-    }
-    },{
-    dataField: 'wisdom',
-    text: 'Wisdom',
-    formatter: (cell) => {
-        return cell && 
-        <div className="ability-modifier-container">
-            <div>
-            <span>{util.abililityModCalculator(cell)}</span>
-            </div>
-            <div>
-                <span>{cell}</span>
-            </div>
-        </div>
-    }
-    },{
-    dataField: 'charisma',
-    text: 'Charisma',
-    formatter: (cell) => {
-            return cell &&
-            <div className="ability-modifier-container">
-                <div>
-                <span>{util.abililityModCalculator(cell)}</span>
-                </div>
-                <div>
-                    <span>{cell}</span>
-                </div>
-            </div>
-        }
-    }
-]
-
 class GeneralInfo extends React.Component {
 
     renderMonsterGeneralInfo = () => {
         var data = [];
         data.push(this.props.monsterInfo);
-        return (<React.Fragment>
-            <BootstrapTable bootstrap4 keyField='name' columns={monsterGeneralInfoTableColumns} data={data}/>
-        </React.Fragment>)
-    }
-
-    renderMonsterAbilityScoresAndMods = () => { 
-        var data = [];
-        data.push(this.props.monsterInfo);
-        return (<React.Fragment>
-        <BootstrapTable bootstrap4 keyField='name' columns={monsterAbilityScoresAndModsColumns} data={data}/>
-        </React.Fragment>)
+        return (<Container>
+            {/* <BootstrapTable bootstrap4 keyField='name' columns={monsterGeneralInfoTableColumns} data={data}/> */}
+            <Row className='general-info-row'>
+                { this.props.monsterInfo.size && <Col><span className="title">Size: </span><span>{this.props.monsterInfo.size}</span></Col>}
+                { this.props.monsterInfo.type && <Col><span className="title">Type: </span><span>{this.props.monsterInfo.type}</span></Col>}
+                { this.props.monsterInfo.alignment && <Col><span className="title">Alignment: </span><span>{this.props.monsterInfo.alignment}</span></Col>}
+            </Row>
+            <Row className='general-info-row'>
+                { this.props.monsterInfo.armor_class && <Col><span className="title">AC: </span><span>{this.props.monsterInfo.armor_class}</span></Col>}
+                { this.props.monsterInfo.hit_points && <Col><span className="title">HP: </span><span>{this.props.monsterInfo.armor_class}</span></Col>}
+                { this.props.monsterInfo.hit_dice && <Col><span className="title">Hit Dice: </span><span>{this.props.monsterInfo.hit_dice}</span></Col>}
+            </Row>
+            {this.props.monsterInfo.speed && 
+                <Row className='general-info-row'>
+                <span>
+                <span className="title">Speed:</span> 
+                {this.props.monsterInfo.speed.walk && <span><span> Walk: </span><span>{this.props.monsterInfo.speed.walk} </span></span>}
+                {this.props.monsterInfo.speed.swim && <span><span>Swim: </span><span>{this.props.monsterInfo.speed.swim} </span></span>}
+                {this.props.monsterInfo.speed.fly && <span><span>Fly: </span><span>{this.props.monsterInfo.speed.fly} </span></span>}
+                {this.props.monsterInfo.speed.burrow && <span><span>Burrow: </span><span>{this.props.monsterInfo.speed.burrow} </span></span>}
+                </span>
+                </Row>}
+            <hr/>
+            <Row className="info-row">
+                <Col>
+                    <div className="ability-mod">{util.abililityModCalculator(this.props.monsterInfo.strength)}</div>
+                    <div className="ability-score">{this.props.monsterInfo.strength}</div>
+                    <div className="title-ability">STR</div>
+                </Col>
+                <Col>
+                    <div className="ability-mod">{util.abililityModCalculator(this.props.monsterInfo.dexterity)}</div>
+                    <div className="ability-score">{this.props.monsterInfo.dexterity}</div>
+                    <div className="title-ability">DEX</div>
+                </Col>
+                <Col>
+                    <div className="ability-mod">{util.abililityModCalculator(this.props.monsterInfo.constitution)}</div>
+                    <div className="ability-score">{this.props.monsterInfo.constitution}</div>
+                    <div className="title-ability">CON</div>
+                </Col>
+                <Col>
+                    <div className="ability-mod">{util.abililityModCalculator(this.props.monsterInfo.intelligence)}</div>
+                    <div className="ability-score">{this.props.monsterInfo.intelligence}</div>
+                    <div className="title-ability">INT</div>
+                </Col>
+                <Col>
+                    <div className="ability-mod">{util.abililityModCalculator(this.props.monsterInfo.wisdom)}</div>
+                    <div className="ability-score">{this.props.monsterInfo.wisdom}</div>
+                    <div className="title-ability">WIS</div>
+                </Col>
+                <Col>
+                    <div className="ability-mod">{util.abililityModCalculator(this.props.monsterInfo.charisma)}</div>
+                    <div className="ability-score">{this.props.monsterInfo.charisma}</div>
+                    <div className="title-ability">CHAR</div>
+                </Col>
+            </Row>
+            
+            
+        </Container>)
     }
 
     renderMonsterProficiencies = () => {
@@ -259,10 +181,7 @@ class GeneralInfo extends React.Component {
     render() {
         let languages = this.props.monsterInfo ? this.props.monsterInfo.languages.split(',') : "";
         return <React.Fragment>
-                    <h3 className="section-title">General info</h3>
                     {this.props.monsterInfo && this.renderMonsterGeneralInfo()}
-                    
-                    {this.props.monsterInfo && this.renderMonsterAbilityScoresAndMods()}
 
                     {languages.length > 0 && <div className='languages-container'>
                     <h6>Languages</h6>

@@ -89,7 +89,6 @@ div.buttons-container {
 .info-row { 
     margin-top:20px;
     margin-bottom: 20px;
-    margin-left: 5px;
 }
 
 .info-with-title-row {
@@ -99,4 +98,28 @@ div.buttons-container {
 
 div.btn-group button.btn.btn-secondary.menu-button { 
     font-size: 10px;
+}
+
+.general-info-row { 
+    font-size: 13px;
+    padding:5px;
+    margin:10px;
+}
+
+.title-ability {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.ability-mod {
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+}
+
+.ability-score { 
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
 }
