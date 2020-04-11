@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import allMonsters from './allMonsters';
+import pageMonsters from './pageMonsters';
 import monsterInfo from './monsterInfo';
 const rootReducer = combineReducers({
-  allMonsters: allMonsters,
+  pageMonsters: pageMonsters,
   monsterInfo: monsterInfo
 })
 

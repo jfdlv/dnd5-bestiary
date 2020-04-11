@@ -70,20 +70,19 @@ div.monster-name-cr-container {
 
 div.monster-name { 
     display:inline-block;
-    text-align: center;
-    width: 32%;
+    text-align: left;
+    width: 49%;
 }
 
 div.monster-cr {
     display: inline-block;
     text-align: right;
-    width: 33%;
+    width: 50%;
 }
 
 div.buttons-container {
-    display:inline-block;
-    text-align: left;
-    width: 33%;
+    text-align: center;
+    width: 100%;
 }
 
 .info-row { 
@@ -101,7 +100,7 @@ div.btn-group button.btn.btn-secondary.menu-button {
 }
 
 .general-info-row { 
-    font-size: 13px;
+    font-size: 15px;
     padding:5px;
     margin:10px;
 }
@@ -123,3 +122,13 @@ div.btn-group button.btn.btn-secondary.menu-button {
     font-size: 15px;
     text-align: center;
 }
+
+.monster-table-body { 
+    height: 500px;
+    overflow-y: auto;
+}
+
+.pointer-on-row {
+    cursor: pointer;
+}
+

@@ -2,8 +2,6 @@ import React from 'react';
 import './App.css';
 
 import {connect} from 'react-redux';
-import {getAllMonstersAction} from './actions/index';
-import {bindActionCreators} from 'redux';
 
 //my components
 import MonstersTable from "./components/MonstersTable/MonstersTable";
@@ -13,9 +11,9 @@ import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css
 
 class App extends React.Component {
 
-  componentDidMount() { 
-    this.props.getAllMonstersAction();
-  }
+  // componentDidMount() { 
+  //   this.props.getAllMonstersAction();
+  // }
 
   render() {  
     return (
@@ -34,11 +32,11 @@ function mapStateToProps(state){
 }
 
 //Anything returned from this function will end up as props on the BookList container.
-function mapDispatchToProps(dispatch){
-  // Whenever selectBook is called, the result should be passed to all of our reducers.
-  return bindActionCreators({
-    getAllMonstersAction}, 
-    dispatch);
-}
+// function mapDispatchToProps(dispatch){
+//   // Whenever selectBook is called, the result should be passed to all of our reducers.
+//   return bindActionCreators({
+//     getAllMonstersAction}, 
+//     dispatch);
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);

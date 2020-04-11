@@ -10,4 +10,13 @@ util.abililityModCalculator = (abilityScore) => {
     return initialValue;
 }
 
+util.lookup = {
+    strength : "STR",
+    dexterity: "DEX",
+    constitution: "CON",
+    intelligence: "INT",
+    wisdom: "WIS",
+    charisma: "CHA"
+}
+
 export default util;
