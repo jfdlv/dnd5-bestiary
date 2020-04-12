@@ -15,7 +15,7 @@ export const getPageMonstersAction = (nextUrl = null) => async dispatch =>{
 };
 
 export const searchTermAction = (term) => async dispatch => {
-    let response = await axios.get(`https://api.open5e.com/monsters/?search=${term}`)
+    const response = await axios.get(`https://api.open5e.com/monsters/?search=${term}`)
     if(response) {
         dispatch({type: "SET_PAGE_MONSTERS", payload:response.data})
     }
@@ -27,3 +27,25 @@ export const getMonsterInfoAction = (url) => async dispatch => {
         dispatch({type: 'SET_MONSTER_INFO', payload: response.data})
     }
 };
+
+export const getMonsterSpellsAction = (urls) => async dispatch => {
+    
+    let promises = [];
+    let spellsArray = [];
+
+    urls.map((url) => { 
+        promises.push(axios.get(url));
+        return null;
+    })
+
+    const responses = await axios.all(promises);
+
+    responses.map((response) => {
+        spellsArray.push(response.data);
+        return null;
+    })  
+
+    dispatch({type: "SET_MONSTER_SPELLS", payload: spellsArray})
+
+    return spellsArray;
+}

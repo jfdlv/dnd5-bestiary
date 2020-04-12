@@ -2,12 +2,15 @@ import React from 'react';
 import _ from 'lodash';
 
 import {connect} from 'react-redux';
+import {getMonsterSpellsAction} from '../../actions/index';
+import {bindActionCreators} from 'redux';
 
 //my components
 import GeneralInfo from './GeneralInfo';
 import SpecialAbilities from './SpecialAbilities';
 import MonsterActions from './MonsterActions';
 import MonsterLegendaryActions from './MonsterLegendaryActions';
+import SpellList from './SpellList';
 
 //react-bootstrap components
 import Modal from 'react-bootstrap/Modal';
@@ -24,8 +27,15 @@ class MonsterModal extends React.Component {
         this.state = {
           showSpecialAbilities: false,
           showMonsterActions: false,
-          showMonstersLegendaryActions: false
+          showMonstersLegendaryActions: false,
+          showMonsterSpells: false
         }
+    }
+
+    onSpellTabSelected = () => {
+        this.setState({showMonsterSpells: true,showMonstersLegendaryActions: false, showMonsterActions: false, showSpecialAbilities: false}); 
+        let urls = this.props.monsterInfo ? this.props.monsterInfo.spell_list : null;
+        this.props.getMonsterSpellsAction(urls);
     }
 
     render() {
@@ -45,20 +55,22 @@ class MonsterModal extends React.Component {
                             <Row>
                                 <div className="buttons-container">
                                     <ButtonGroup>
-                                    <Button className="menu-button" variant="secondary" onClick={()=>{this.setState({showSpecialAbilities: false, showMonsterActions: false, showMonstersLegendaryActions: false})}} disabled={!this.state.showSpecialAbilities && !this.state.showMonsterActions && !this.state.showMonstersLegendaryActions}>General Info</Button>
-                                    <Button className="menu-button" variant="secondary" onClick={()=>{this.setState({showSpecialAbilities: true, showMonsterActions: false, showMonstersLegendaryActions:false})}} disabled={this.state.showSpecialAbilities}>Special abilities</Button>
-                                    <Button className="menu-button" variant="secondary" onClick={()=>{this.setState({showMonsterActions: true, showSpecialAbilities: false, showMonstersLegendaryActions: false})}} disabled={this.state.showMonsterActions}>Actions</Button>
-                                    {this.props.monsterInfo && !_.isEmpty(this.props.monsterInfo.legendary_actions) && <Button className="menu-button" variant="secondary" onClick={()=>{this.setState({showMonstersLegendaryActions: true, showMonsterActions: false, showSpecialAbilities: false})}} disabled={this.state.showMonstersLegendaryActions}>Legendary Actions</Button>}
+                                    <Button className="menu-button" variant="secondary" onClick={()=>{this.setState({showSpecialAbilities: false, showMonsterActions: false, showMonstersLegendaryActions: false, showMonsterSpells: false})}} disabled={!this.state.showSpecialAbilities && !this.state.showMonsterActions && !this.state.showMonstersLegendaryActions && !this.state.showMonsterSpells}>General Info</Button>
+                                    <Button className="menu-button" variant="secondary" onClick={()=>{this.setState({showSpecialAbilities: true, showMonsterActions: false, showMonstersLegendaryActions:false, showMonsterSpells: false})}} disabled={this.state.showSpecialAbilities}>Special abilities</Button>
+                                    {this.props.monsterInfo && !_.isEmpty(this.props.monsterInfo.spell_list) && <Button className="menu-button" variant="secondary" onClick={this.onSpellTabSelected} disabled={this.state.showMonsterSpells}>Spell List</Button>}
+                                    <Button className="menu-button" variant="secondary" onClick={()=>{this.setState({showMonsterActions: true, showSpecialAbilities: false, showMonstersLegendaryActions: false, showMonsterSpells: false})}} disabled={this.state.showMonsterActions}>Actions</Button>
+                                    {this.props.monsterInfo && !_.isEmpty(this.props.monsterInfo.legendary_actions) && <Button className="menu-button" variant="secondary" onClick={()=>{this.setState({showMonstersLegendaryActions: true, showMonsterActions: false, showSpecialAbilities: false, showMonsterSpells: false})}} disabled={this.state.showMonstersLegendaryActions}>Legendary Actions</Button>}
                                     </ButtonGroup>
                                 </div>
                             </Row>
                         </Container>
                     </Modal.Header>
                     <Modal.Body>
-                        {(!this.state.showSpecialAbilities && !this.state.showMonsterActions && !this.state.showMonstersLegendaryActions) && <GeneralInfo/>}
+                        {(!this.state.showSpecialAbilities && !this.state.showMonsterActions && !this.state.showMonstersLegendaryActions && !this.state.showMonsterSpells) && <GeneralInfo/>}
                         {this.state.showSpecialAbilities && <SpecialAbilities/>}
                         {this.state.showMonsterActions && <MonsterActions/>}
                         {this.state.showMonstersLegendaryActions && <MonsterLegendaryActions/>}
+                        {this.state.showMonsterSpells && <SpellList/>}
                     </Modal.Body>
                 </Modal>}
 } 
@@ -70,4 +82,12 @@ function mapStateToProps(state){
     };
 }
 
-export default connect(mapStateToProps, null)(MonsterModal);
+function mapDispatchToProps(dispatch){
+    // Whenever selectBook is called, the result should be passed to all of our reducers.
+    return bindActionCreators({
+        getMonsterSpellsAction
+    }, 
+      dispatch);
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(MonsterModal);
