@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d4a40436d479b494f5fc857423004bf5",
+    "revision": "51217e46870593162841658cc94e7819",
     "url": "/dnd5-bestiary/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dnd5-bestiary/static/css/2.de39f076.chunk.css"
   },
   {
-    "revision": "72b31d58fc27457a0a2f",
-    "url": "/dnd5-bestiary/static/css/main.58c96528.chunk.css"
+    "revision": "fa5ffb59325e6f715fb8",
+    "url": "/dnd5-bestiary/static/css/main.602aaf20.chunk.css"
   },
   {
     "revision": "48ec8c19c37621c0c96a",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dnd5-bestiary/static/js/2.ade2319d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "72b31d58fc27457a0a2f",
-    "url": "/dnd5-bestiary/static/js/main.1bc6e265.chunk.js"
+    "revision": "fa5ffb59325e6f715fb8",
+    "url": "/dnd5-bestiary/static/js/main.d07e4b84.chunk.js"
   },
   {
     "revision": "df3183d40f07420818ba",
