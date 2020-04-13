@@ -118,12 +118,12 @@ class MonstersTable extends React.Component {
       text: "",
       formatter: (cell,row,rowIndex) => {
 
-        return <Row>
-                <Col md="3">
-                  <Button variant="secondary" onClick={()=>{this.addMonsterToSession(row)}}>Add</Button>
+        return <Row md={4} xs={1}>
+                <Col className="table-row-button-container">
+                  <Button className="table-row-button" variant="secondary" onClick={()=>{this.addMonsterToSession(row)}}>Add</Button>
                 </Col> 
-                <Col md="3">
-                  <Button variant="secondary" onClick={()=>{this.showMonsterInfo(row)}}>View</Button>
+                <Col className="table-row-button-container">
+                  <Button className="table-row-button" variant="secondary" onClick={()=>{this.showMonsterInfo(row)}}>View</Button>
                 </Col>
               </Row>
       }

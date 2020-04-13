@@ -128,3 +128,13 @@ div.btn-group button.btn.btn-secondary.menu-button {
     overflow-y: auto;
 }
 
+@media only screen and (max-width: 500px) {
+    .table-row-button-container {
+        margin-bottom: 5px;
+    }
+
+    .table-row-button-container .table-row-button {
+        font-size: 12px;
+    }
+}
+

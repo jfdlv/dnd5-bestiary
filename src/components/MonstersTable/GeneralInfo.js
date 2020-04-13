@@ -60,7 +60,7 @@ class GeneralInfo extends React.Component {
             </Row>
             
             <hr/>
-            <Row className="info-row">
+            <Row className="info-row" xs={3}>
                 <Col>
                     <div className="ability-mod">{util.abililityModCalculator(this.props.monsterInfo.strength)}</div>
                     <div className="ability-score">{this.props.monsterInfo.strength}</div>

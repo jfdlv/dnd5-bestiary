@@ -63,12 +63,12 @@ class SessionMonsters extends React.Component {
             text: "",
             formatter: (cell,row,rowIndex) => {
       
-              return <Row>
-                        <Col md="4">
-                            <Button variant="secondary" onClick={()=>{this.removeMonsterFromSession(row)}}>Remove</Button>
+              return <Row md={3} xs={1}>
+                        <Col className="table-row-button-container">
+                            <Button className="table-row-button" variant="secondary" onClick={()=>{this.removeMonsterFromSession(row)}}>Remove</Button>
                         </Col> 
-                        <Col md="3">
-                            <Button variant="secondary" onClick={()=>{this.showMonsterInfo(row)}}>View</Button>
+                        <Col className="table-row-button-container">
+                            <Button className="table-row-button" variant="secondary" onClick={()=>{this.showMonsterInfo(row)}}>View</Button>
                         </Col>
                     </Row>
             }
