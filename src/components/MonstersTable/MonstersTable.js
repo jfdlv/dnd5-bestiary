@@ -3,7 +3,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getPageMonstersAction,
         getMonsterInfoAction,
-        searchTermAction} from '../../actions/index';
+        searchTermAction,
+        updateSessionMonstersAction} from '../../actions/index';
 import {bindActionCreators} from 'redux';
 
 
@@ -22,20 +23,8 @@ import FormControl from 'react-bootstrap/FormControl';
 
 //react-bootstrap-table2
 import BootstrapTable from 'react-bootstrap-table-next';
-import filterFactory from 'react-bootstrap-table2-filter';
 
 import './MonstersTable.css';
-
-const monsterTableColumns = [{
-  dataField: 'name',
-  text: 'Monster Name'
-},{
-  dataField: 'type',
-  text: 'Type'
-},{
-  dataField: 'challenge_rating',
-  text: 'CR'
-}];
 
 class MonstersTable extends React.Component {
 
@@ -51,6 +40,11 @@ class MonstersTable extends React.Component {
 
   componentDidMount() { 
     this.props.getPageMonstersAction();
+    if(localStorage.getItem("sessionMonstersDnd5Bestiary")){
+      var parsedSessionMonsters = JSON.parse(localStorage.getItem("sessionMonstersDnd5Bestiary"));
+      this.props.updateSessionMonstersAction(parsedSessionMonsters);
+    }
+    
   }
 
   handleMonsterModalOpen = () => { 
@@ -84,15 +78,58 @@ class MonstersTable extends React.Component {
     this.props.searchTermAction(this.state.searchTerm);
   }
 
+  addMonsterToSession = (monster) => {
+      console.log(monster);
+      let monsters = [];
+      monsters.push(monster);
+      let newMonstersArray = monsters.concat(this.props.sessionMonsters);
+      localStorage.setItem('sessionMonstersDnd5Bestiary', JSON.stringify(newMonstersArray));
+      this.props.updateSessionMonstersAction(newMonstersArray);
+  }
+
+  showMonsterInfo = (monster) => {
+    this.props.getMonsterInfoAction(monster.slug);
+    this.handleMonsterModalOpen();
+  }
+
 
   rowEvents = {
-    onClick: (e,row) => {
+    onClick: (e,row, rowIndex) => {
+        console.log(e.target);
+        console.log(row);
         this.props.getMonsterInfoAction(row.slug);
         this.handleMonsterModalOpen();
     }
   };
 
-  render() {  
+  render() {
+    
+    const monsterTableColumns = [{
+      dataField: 'name',
+      text: 'Monster Name'
+    },{
+      dataField: 'type',
+      text: 'Type'
+    },{
+      dataField: 'challenge_rating',
+      text: 'CR'
+    },{
+      dataField: 'slug',
+      text: "",
+      formatter: (cell,row,rowIndex) => {
+
+        return <Row>
+                <Col md="3">
+                  <Button variant="secondary" onClick={()=>{this.addMonsterToSession(row)}}>Add</Button>
+                </Col> 
+                <Col md="3">
+                  <Button variant="secondary" onClick={()=>{this.showMonsterInfo(row)}}>View</Button>
+                </Col>
+              </Row>
+      }
+    }];
+
+
     return (
       <Container>
         {this.props.pageMonsters && 
@@ -118,7 +155,7 @@ class MonstersTable extends React.Component {
           
           </Row>
 
-          <BootstrapTable bootstrap4 classes="table-dark" rowClasses="pointer-on-row" keyField='name' data={ this.props.pageMonsters ? this.props.pageMonsters.results : [] } columns={ monsterTableColumns } filter={ filterFactory() } rowEvents={ this.rowEvents }/>
+          <BootstrapTable bootstrap4 classes="table-dark" keyField='name' data={ this.props.pageMonsters ? this.props.pageMonsters.results : [] } columns={ monsterTableColumns }/>
           
           <MonsterModal handleMonsterModalClose={this.handleMonsterModalClose} showMonsterModal={this.state.showMonsterModal}/>
         
@@ -133,7 +170,8 @@ function mapStateToProps(state){
   //Whatever is returned will show up as props inside of BookList.
   return {
     pageMonsters: state.pageMonsters,
-    monsterInfo: state.monsterInfo
+    monsterInfo: state.monsterInfo,
+    sessionMonsters: state.sessionMonsters
   };
 }
 
@@ -143,7 +181,8 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators({
     getPageMonstersAction,
     getMonsterInfoAction,
-    searchTermAction
+    searchTermAction,
+    updateSessionMonstersAction
   }, 
     dispatch);
 }

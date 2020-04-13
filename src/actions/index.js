@@ -49,3 +49,10 @@ export const getMonsterSpellsAction = (urls) => async dispatch => {
 
     return spellsArray;
 }
+
+export const updateSessionMonstersAction = (monsters) => {
+    console.log(monsters);
+    return (dispatch) => {
+        dispatch({type: 'SET_SESSION_MONSTERS', payload: monsters})
+    }
+}
