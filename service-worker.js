@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/dnd5-bestiary/precache-manifest.4f3868477586fb84e2fce35e5737d151.js"
+  "/dnd5-bestiary/precache-manifest.ca935b298b03c78a8ef4017df17f0943.js"
 );
 
 self.addEventListener('message', (event) => {

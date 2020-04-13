@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/dnd5-bestiary/static/css/main.602aaf20.chunk.css",
-    "main.js": "/dnd5-bestiary/static/js/main.d07e4b84.chunk.js",
-    "main.js.map": "/dnd5-bestiary/static/js/main.d07e4b84.chunk.js.map",
+    "main.css": "/dnd5-bestiary/static/css/main.cb34885d.chunk.css",
+    "main.js": "/dnd5-bestiary/static/js/main.da5740e0.chunk.js",
+    "main.js.map": "/dnd5-bestiary/static/js/main.da5740e0.chunk.js.map",
     "runtime-main.js": "/dnd5-bestiary/static/js/runtime-main.d4c7c0f7.js",
     "runtime-main.js.map": "/dnd5-bestiary/static/js/runtime-main.d4c7c0f7.js.map",
     "static/css/2.de39f076.chunk.css": "/dnd5-bestiary/static/css/2.de39f076.chunk.css",
-    "static/js/2.ade2319d.chunk.js": "/dnd5-bestiary/static/js/2.ade2319d.chunk.js",
-    "static/js/2.ade2319d.chunk.js.map": "/dnd5-bestiary/static/js/2.ade2319d.chunk.js.map",
+    "static/js/2.98fa9e57.chunk.js": "/dnd5-bestiary/static/js/2.98fa9e57.chunk.js",
+    "static/js/2.98fa9e57.chunk.js.map": "/dnd5-bestiary/static/js/2.98fa9e57.chunk.js.map",
     "index.html": "/dnd5-bestiary/index.html",
-    "precache-manifest.4f3868477586fb84e2fce35e5737d151.js": "/dnd5-bestiary/precache-manifest.4f3868477586fb84e2fce35e5737d151.js",
+    "precache-manifest.ca935b298b03c78a8ef4017df17f0943.js": "/dnd5-bestiary/precache-manifest.ca935b298b03c78a8ef4017df17f0943.js",
     "service-worker.js": "/dnd5-bestiary/service-worker.js",
     "static/css/2.de39f076.chunk.css.map": "/dnd5-bestiary/static/css/2.de39f076.chunk.css.map",
-    "static/css/main.602aaf20.chunk.css.map": "/dnd5-bestiary/static/css/main.602aaf20.chunk.css.map",
-    "static/js/2.ade2319d.chunk.js.LICENSE.txt": "/dnd5-bestiary/static/js/2.ade2319d.chunk.js.LICENSE.txt"
+    "static/css/main.cb34885d.chunk.css.map": "/dnd5-bestiary/static/css/main.cb34885d.chunk.css.map",
+    "static/js/2.98fa9e57.chunk.js.LICENSE.txt": "/dnd5-bestiary/static/js/2.98fa9e57.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d4c7c0f7.js",
     "static/css/2.de39f076.chunk.css",
-    "static/js/2.ade2319d.chunk.js",
-    "static/css/main.602aaf20.chunk.css",
-    "static/js/main.d07e4b84.chunk.js"
+    "static/js/2.98fa9e57.chunk.js",
+    "static/css/main.cb34885d.chunk.css",
+    "static/js/main.da5740e0.chunk.js"
   ]
 }
