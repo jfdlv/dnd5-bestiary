@@ -1,132 +1,10 @@
 
 
-.multiple-values-container {
-    font-size: 12px;
-}
-
-.ability-modifier-container {
-    font-size: 12px;
-    text-align: center;
-}
-
-.ability-modifier-container div:first-child {
-    font-size: 20px;    
-}
-
-.title {
-    font-weight: bold;
-    text-transform: capitalize;
-}
-
-.section-title {
-    text-align: center;
-    text-decoration: underline;
-    margin-bottom: 20px;
-}
-
-.underlined-title {
-    text-decoration: underline;
-}
-
-.dmg-property-title {
-    margin-bottom: 0px;
-}
-
-.dmg-property-title:not(:first-child) {
-    margin-top: 40px;
-}
-
-.languages-container {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
-    padding: 5px;
-}
-
-.languages-container > div.row {
-    padding: 10px;
-}
-
+/* monster Table */
 .fas.fa-circle {
     font-size: 12px;
 }
 
-h5 {
-    padding: 5px;
-}
-
-h6 {
-    padding: 5px;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-}
-
-div.monster-name-cr-container {
-    width: 100%;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-div.monster-name { 
-    display:inline-block;
-    text-align: left;
-    width: 49%;
-}
-
-div.monster-cr {
-    display: inline-block;
-    text-align: right;
-    width: 50%;
-}
-
-div.buttons-container {
-    text-align: center;
-    width: 100%;
-}
-
-.info-row { 
-    margin-top:20px;
-    margin-bottom: 20px;
-}
-
-.info-with-title-row {
-    margin-bottom: 20px;
-    margin-left: 5px;
-}
-
-div.btn-group button.btn.btn-secondary.menu-button { 
-    font-size: 10px;
-}
-
-.general-info-row { 
-    font-size: 15px;
-    padding:5px;
-    margin:10px;
-}
-
-.title-ability {
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-}
-
-.ability-mod {
-    width: 100%;
-    font-size: 25px;
-    text-align: center;
-}
-
-.ability-score { 
-    width: 100%;
-    font-size: 15px;
-    text-align: center;
-}
-
-.monster-table-body { 
-    height: 500px;
-    overflow-y: auto;
-}
 
 @media only screen and (max-width: 500px) {
     .table-row-button-container {
@@ -134,7 +12,7 @@ div.btn-group button.btn.btn-secondary.menu-button {
     }
 
     .table-row-button-container .table-row-button {
-        font-size: 12px;
+        font-size: 10px;
     }
+    
 }
-

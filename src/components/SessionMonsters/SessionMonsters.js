@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 import {getMonsterInfoAction,updateSessionMonstersAction} from '../../actions/index';
 
 //mycomponents
-import MonsterModal from '../MonstersTable/MonsterModal';
+import MonsterModal from '../MonsterModal/MonsterModal';
 
 //react-bootstrap components
 import Button from 'react-bootstrap/Button';
@@ -65,10 +65,10 @@ class SessionMonsters extends React.Component {
       
               return <Row md={3} xs={1}>
                         <Col className="table-row-button-container">
-                            <Button className="table-row-button" variant="secondary" onClick={()=>{this.removeMonsterFromSession(row)}}>Remove</Button>
+                            <Button className="table-row-button" variant="secondary" onClick={()=>{this.removeMonsterFromSession(row)}}><i className="fas fa-trash"/></Button>
                         </Col> 
                         <Col className="table-row-button-container">
-                            <Button className="table-row-button" variant="secondary" onClick={()=>{this.showMonsterInfo(row)}}>View</Button>
+                            <Button className="table-row-button" variant="secondary" onClick={()=>{this.showMonsterInfo(row)}}><i className="far fa-eye"/></Button>
                         </Col>
                     </Row>
             }

@@ -13,6 +13,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import "./GeneralInfo.css";
+
 class GeneralInfo extends React.Component {
 
     renderMonsterGeneralInfo = () => {
@@ -60,7 +62,7 @@ class GeneralInfo extends React.Component {
             </Row>
             
             <hr/>
-            <Row className="info-row" xs={3}>
+            <Row className="info-row" xs={3} md={6}>
                 <Col>
                     <div className="ability-mod">{util.abililityModCalculator(this.props.monsterInfo.strength)}</div>
                     <div className="ability-score">{this.props.monsterInfo.strength}</div>

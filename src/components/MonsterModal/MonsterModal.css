@@ -1,0 +1,32 @@
+
+/* Monster Modal */
+div.monster-name-cr-container {
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* Monster Modal */
+div.monster-name { 
+    display:inline-block;
+    text-align: left;
+    width: 49%;
+}
+
+/* Monster Modal */
+div.monster-cr {
+    display: inline-block;
+    text-align: right;
+    width: 50%;
+}
+
+/* Monster Modal */
+div.buttons-container {
+    text-align: center;
+    width: 100%;
+}
+
+/* Monster Modal */
+div.btn-group button.btn.btn-secondary.menu-button { 
+    font-size: 10px;
+}

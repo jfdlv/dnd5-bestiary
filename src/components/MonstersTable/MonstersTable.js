@@ -10,7 +10,7 @@ import {bindActionCreators} from 'redux';
 
 
 //my components
-import MonsterModal from './MonsterModal.js';
+import MonsterModal from '../MonsterModal/MonsterModal.js';
 
 // //react-bootstrap components
 import Container from 'react-bootstrap/Container';
@@ -120,10 +120,10 @@ class MonstersTable extends React.Component {
 
         return <Row md={4} xs={1}>
                 <Col className="table-row-button-container">
-                  <Button className="table-row-button" variant="secondary" onClick={()=>{this.addMonsterToSession(row)}}>Add</Button>
+                  <Button className="table-row-button" variant="secondary" onClick={()=>{this.addMonsterToSession(row)}}><i className="fas fa-plus"/></Button>
                 </Col> 
                 <Col className="table-row-button-container">
-                  <Button className="table-row-button" variant="secondary" onClick={()=>{this.showMonsterInfo(row)}}>View</Button>
+                  <Button className="table-row-button" variant="secondary" onClick={()=>{this.showMonsterInfo(row)}}><i className="far fa-eye"/></Button>
                 </Col>
               </Row>
       }

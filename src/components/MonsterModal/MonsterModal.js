@@ -19,7 +19,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
-  
+import "./MonsterModal.css";
 class MonsterModal extends React.Component {
     
     constructor(props) {
